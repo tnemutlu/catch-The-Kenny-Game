@@ -80,11 +80,8 @@ class ViewController: UIViewController {
         counter = 10
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunc), userInfo: nil, repeats: true)
         hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(hideKenny), userInfo: nil, repeats: true)
+        
         hideKenny()
-        
-       
-        
-    
     }
     
     @objc func hideKenny () {
@@ -94,10 +91,7 @@ class ViewController: UIViewController {
         
         let random = Int(arc4random_uniform(UInt32(kennyArray.count-1)))
         kennyArray[random].isHidden = false
-        
     }
-    
-    
     
     @objc func timerFunc () {
         timeLabel.text = String(counter)
@@ -112,13 +106,13 @@ class ViewController: UIViewController {
             }
             
             
-            if self.score > self.highScore {
-                self.highScore = self.score
-                highScoreLabel.text = "HighScore: \(self.highScore)"
-                UserDefaults.standard.set(self.highScore, forKey: "highScore")
-            }
+    if self.score > self.highScore {
+        self.highScore = self.score
+        highScoreLabel.text = "HighScore: \(self.highScore)"
+        UserDefaults.standard.set(self.highScore, forKey: "highScore")
+    }
             
-        }
+}
         
         if counter == -1 {
             let alert = UIAlertController.init(title: "Time's Up", message: "Do you want to play again?", preferredStyle: UIAlertController.Style.alert)
@@ -127,8 +121,8 @@ class ViewController: UIViewController {
             alert.addAction(okButton)
             
             let retryButton = UIAlertAction.init(title: "Retry", style: UIAlertAction.Style.default) { (UIAlertAction) in
-                // replay function
                 
+                // replay function
                 
                 self.score = 0
                 self.scoreLabel.text = "Score: \(self.score)"
@@ -138,7 +132,6 @@ class ViewController: UIViewController {
                 self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerFunc), userInfo: nil, repeats: true)
                 self.hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.hideKenny), userInfo: nil, repeats: true)
                 self.hideKenny()
-                
             }
             alert.addAction(retryButton)
             
@@ -149,8 +142,6 @@ class ViewController: UIViewController {
     @objc func scoreFunc () {
         score += 1
         scoreLabel.text = "Score: \(score)"
-        
-        
     }
     
 }
