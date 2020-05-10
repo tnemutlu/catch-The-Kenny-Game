@@ -4,7 +4,6 @@
 //
 //  Created by TANRIKUT NEMUTLU on 9.05.2020.
 //  Copyright © 2020 TANRIKUT NEMUTLU. All rights reserved.
-//
 
 import UIKit
 
@@ -23,9 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var kenny7: UIImageView!
     @IBOutlet weak var kenny8: UIImageView!
     @IBOutlet weak var kenny9: UIImageView!
-    
-    
-
     
     var timer = Timer ()
     var counter = 0
@@ -122,8 +118,6 @@ class ViewController: UIViewController {
                 UserDefaults.standard.set(self.highScore, forKey: "highScore")
             }
             
-            
-            
         }
         
         if counter == -1 {
@@ -152,9 +146,6 @@ class ViewController: UIViewController {
         }
     }
    
-
-    
-    
     @objc func scoreFunc () {
         score += 1
         scoreLabel.text = "Score: \(score)"
